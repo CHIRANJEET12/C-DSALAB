@@ -42,6 +42,7 @@ int main()
     }
 
     ptr=head;
+    //created nodes
 
     int search;
     printf("enter the element to be searched : ");
@@ -83,7 +84,7 @@ int main()
     int del;
     printf("enter node u want to delete : ");
     scanf("%d",&del);
-    for(int i=1;i<del-1;i++)
+    for(int i=1;i<del;i++)
     {
         ptr=ptr->next;
     }
