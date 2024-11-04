@@ -15,7 +15,6 @@ int main()
                 printf("is there any self loop in the particular vertex %d and %d :",i, j);
                 scanf("%d",&arr[i][j]);
             }else{
-                
                 printf("is there any connection between %d and %d :",i,j);
                 scanf("%d",&arr[i][j]);
             }
