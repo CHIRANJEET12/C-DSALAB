@@ -12,13 +12,11 @@ int main() {
         scanf("%d", &arr[i]);
     }
 
-    // Iterative merge sort
     for (int currSize = 1; currSize < n; currSize *= 2) {
         for (int leftStart = 0; leftStart < n - 1; leftStart += 2 * currSize) {
             int mid = leftStart + currSize - 1;
             int rightEnd = (leftStart + 2 * currSize - 1 < n - 1) ? leftStart + 2 * currSize - 1 : n - 1;
 
-            // Merging the subarrays
             int n1 = mid - leftStart + 1;
             int n2 = rightEnd - mid;
 

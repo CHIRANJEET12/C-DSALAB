@@ -2,72 +2,77 @@
 #include <stdlib.h>
 #define MAX 5
 
-struct queue{
+struct queue {
     int element[MAX];
     int front;
     int rear;
+};
+
+void initialize(struct queue *q) {
+    q->front = -1;
+    q->rear = -1;
 }
 
-void initial(struct queue element){
-    queue->front =-1;
-    queue->rear =-1;
+int isempty(struct queue *q) {
+    return (q->front == -1 && q->rear == -1);
 }
 
-void isempty(){
-    if(queue->front ==-1 && queue->rear == -1){
-        printf("queue is empty");
-    }
+int isfull(struct queue *q) {
+    return (q->rear == MAX - 1);
 }
 
-void isfull(){
-    if(queue->rear == MAX-1){
-        printf("queue is full");
-    }
-}
-
-void enqueue(struct queue item , int k){
-    if(isfull){
+void enqueue(struct queue *q, int k) {
+    if (isfull(q)) {
+        printf("Queue is full\n");
         return;
     }
-    if(queue->front==-1 && queue->rear ==-1){
-        queue->front==0;
-        queue->rear==0;
-    }else{
-        queue->rear++;
+    if (q->front == -1 && q->rear == -1) {
+        q->front = 0;
+        q->rear = 0;
+    } else {
+        q->rear++;
     }
-    queue->element[rear] = k;
-    printf("%d inserted",k);
+    q->element[q->rear] = k;
+    printf("%d inserted\n", k);
 }
 
-void dequeue(struct queue item){
-    if(isempty){
+void dequeue(struct queue *q) {
+    if (isempty(q)) {
+        printf("Queue is empty\n");
         return;
-    }if(queue->front == queue->rear){
-        printf("%d deleted",queue->item[front] );
-        queue->front = queue->rear = -1;
-    }else{
-        printf("%d elements", queue->item[front]);
-        queue->front++;
+    }
+    if (q->front == q->rear) {
+        printf("%d deleted\n", q->element[q->front]);
+        q->front = q->rear = -1;
+    } else {
+        printf("%d deleted\n", q->element[q->front]);
+        q->front++;
     }
 }
+void printlist(struct queue *q) {
+    if (isempty(q)) {
+        printf("Queue is empty\n");
+        return;
+    }
+    
+    printf("Queue elements: ");
+    for (int i = q->front; i <= q->rear; i++) {
+        printf("%d ", q->element[i]);
+    }
+    printf("\n");
+}
 
+int main() {
+    struct queue q;
+    initialize(&q);
 
-
-
-
-
-int mian(){
-
-    enqueue(queue,1);
-    enqueue(queue,2);
-    enqueue(queue,3);
-    enqueue(queue,4);
-    dequeue(queue);
-    dequeue(queue);
-
-
-
-
+    enqueue(&q, 1);
+    enqueue(&q, 2);
+    enqueue(&q, 3);
+    enqueue(&q, 4);
+    // dequeue(&q);
+    // dequeue(&q);
+    printlist(&q);
 
     return 0;
 }
